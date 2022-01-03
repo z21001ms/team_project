@@ -210,3 +210,136 @@ Entrypoint application = js/application-19ade39cc333985062bf.js js/application-1
 Completed 200 OK in 1633ms (Views: 1628.9ms | ActiveRecord: 0.0ms | Allocations: 11312)
 
 
+  [1m[35m (150.0ms)[0m  [1m[35mCREATE DATABASE "lse_dev" ENCODING = 'unicode'[0m
+  [1m[35m (42.8ms)[0m  [1m[35mCREATE DATABASE "lse_test" ENCODING = 'unicode'[0m
+  [1m[35m (23.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3867476213282235750)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateCoodinates (20211222071440)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.5ms)[0m  [1m[35mCREATE TABLE "coordinates" ("id" bigserial primary key, "latitude" float NOT NULL, "longitude" float NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20211222071440"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSongs (20211222072155)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "songs" ("id" bigserial primary key, "platform" integer NOT NULL, "url" character varying(2048) NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20211222072155"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCoordinateSongs (20211222072856)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.6ms)[0m  [1m[35mCREATE TABLE "coordinate_songs" ("id" bigserial primary key, "coordinate_id" bigint NOT NULL, "song_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_de06aadc39"
+FOREIGN KEY ("coordinate_id")
+  REFERENCES "coordinates" ("id")
+, CONSTRAINT "fk_rails_876bc78cf0"
+FOREIGN KEY ("song_id")
+  REFERENCES "songs" ("id")
+)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE INDEX "index_coordinate_songs_on_coordinate_id" ON "coordinate_songs" ("coordinate_id")[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE INDEX "index_coordinate_songs_on_song_id" ON "coordinate_songs" ("song_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20211222072856"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-01-03 05:10:59.331920"], ["updated_at", "2022-01-03 05:10:59.331920"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(3867476213282235750)[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mSong Load (2.5ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSong Load (0.8ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSong Create (5.5ms)[0m  [1m[32mINSERT INTO "songs" ("platform", "url", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["platform", 0], ["url", "test url"], ["created_at", "2022-01-03 05:11:35.727413"], ["updated_at", "2022-01-03 05:11:35.727413"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mSong Load (0.7ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[36mSong Load (0.8ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSong Load (0.7ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Started GET "/" for ::1 at 2022-01-03 14:13:25 +0900
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 2336)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | Allocations: 2434)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms | Allocations: 5749)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    1: <h2>Registered songs</h2>
+    2: 
+    3: <ul>
+    4:   <% @songs.each do |song| %>
+    5:     <li>
+    6:       <%= song.url %>
+    7:     </li>
+  
+app/views/welcome/index.html.erb:4
+Started GET "/" for ::1 at 2022-01-03 14:16:55 +0900
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant SongsController
+Did you mean?  SongController):
+  
+Started GET "/" for ::1 at 2022-01-03 14:17:26 +0900
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SongController#index as HTML
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 3710)
+
+
+  
+NameError (uninitialized constant SongController::Songs):
+  
+app/controllers/song_controller.rb:3:in `index'
+Started GET "/" for ::1 at 2022-01-03 14:19:54 +0900
+Processing by SongController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering song/index.html.erb within layouts/application
+  [1m[36mSong Load (1.7ms)[0m  [1m[34mSELECT "songs".* FROM "songs"[0m
+  ↳ app/views/song/index.html.erb:4
+  Rendered song/index.html.erb within layouts/application (Duration: 16.6ms | Allocations: 5224)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+yarn run v1.22.17
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+
+
+error Command "webpack" not found.
+
+  Rendered layout layouts/application.html.erb (Duration: 769.1ms | Allocations: 21126)
+Completed 500 Internal Server Error in 773ms (ActiveRecord: 9.9ms | Allocations: 23162)
+
+
+  
+ActionView::Template::Error (Webpacker can't find application.js in /Users/kono/projects/aiit/team_project/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+}
+):
+     7:     <%= csp_meta_tag %>
+     8: 
+     9:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    10:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    11:   </head>
+    12: 
+    13:   <body>
+  
+app/views/layouts/application.html.erb:10
+Started GET "/" for ::1 at 2022-01-03 14:22:19 +0900
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SongController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering song/index.html.erb within layouts/application
+  [1m[36mSong Load (1.0ms)[0m  [1m[34mSELECT "songs".* FROM "songs"[0m
+  ↳ app/views/song/index.html.erb:4
+  Rendered song/index.html.erb within layouts/application (Duration: 8.5ms | Allocations: 5110)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 17.6ms | Allocations: 11338)
+Completed 200 OK in 25ms (Views: 15.3ms | ActiveRecord: 5.1ms | Allocations: 15695)
+
+
