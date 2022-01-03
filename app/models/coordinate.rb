@@ -9,4 +9,6 @@
 #  updated_at :datetime         not null
 #
 class Coordinate < ApplicationRecord
+    # Config for geocoder
+    geocoded_by latitude: :latitude, longitude: :longitude
 end

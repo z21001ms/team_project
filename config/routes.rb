@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  root 'song#index'
+  root 'welcome#index'
+
+  post "/", to: "coordinate#find"
 end
