@@ -1,0 +1,10 @@
+<h2>Points in 5km from your location!</h2>
+
+<ul>
+  <% @coodinates_in_area.each do |point| %>
+  <h3>Point</h3>
+
+  <p>Latitude: <%= point.latitude %></p>
+  <p>Longitude: <%= point.longitude %></p>
+  <% end %>
+</ul>

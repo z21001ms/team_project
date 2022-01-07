@@ -1,0 +1,9 @@
+<h2>Registered songs</h2>
+
+<ul>
+  <% @songs.each do |song| %>
+    <li>
+      <%= song.url %>
+    </li>
+  <% end %>
+</ul>

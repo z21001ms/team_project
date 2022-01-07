@@ -1,4 +1,17 @@
-<h2>Hello World</h2>
-<p>
-  The time is now: <%= Time.now %>
-</p>
+<h2>Welcome to Local Song Explorer</h2>
+
+<%= form_with model: @coordinate do |form| %>
+  <div>
+    <%= form.label :latitude %><br>
+    <%= form.text_field :latitude %>
+  </div>
+
+  <div>
+    <%= form.label :longitude %><br>
+    <%= form.text_field :longitude %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

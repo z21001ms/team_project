@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2021_12_22_072856) do
 
   create_table "songs", force: :cascade do |t|
     t.integer "platform", null: false
-    t.string "url", limit: 1024, null: false
+    t.string "url", limit: 2048, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
