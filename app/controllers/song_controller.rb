@@ -10,6 +10,7 @@ class SongController < ApplicationController
         coordinate = Coordinate.new(latitude: 50, longitude: 50)
         @song.coordinate << coordinate
         if @song.save
+            flash[:success] = "Your song registration successfully"
             redirect_to "/"
         else
             redirect_to "/register"
