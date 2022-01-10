@@ -1,6 +1,6 @@
 <h2>Welcome to Local Song Explorer</h2>
 
-<%= form_with model: @coordinate do |form| %>
+<%= form_with model: @coordinate, url: :find, method: :get do |form| %>
   <div>
     <%= form.label :latitude %><br>
     <%= form.text_field :latitude %>
@@ -12,6 +12,20 @@
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "Search" %>
   </div>
 <% end %>
+
+<script>
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        window.alert('Geolocation API対応ブラウザでアクセスしてください。');
+    }
+
+    function showPosition(position) {
+        document.getElementById( "latitude" ).value = position.coords.latitude;
+        document.getElementById( "longitude" ).value = position.coords.longitude;
+    }
+</script>

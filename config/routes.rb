@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   root 'welcome#index'
 
-  post "/", to: "coordinate#find"
+  get "/find", to: "coordinate#find"
 end
