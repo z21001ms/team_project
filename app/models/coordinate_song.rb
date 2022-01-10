@@ -19,4 +19,6 @@
 #  fk_rails_...  (song_id => songs.id)
 #
 class CoordinateSong < ApplicationRecord
+    belongs_to :coordinate
+    belongs_to :song
 end

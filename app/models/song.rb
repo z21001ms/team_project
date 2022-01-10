@@ -9,4 +9,6 @@
 #  updated_at :datetime         not null
 #
 class Song < ApplicationRecord
+    has_many :coordinate_songs
+    has_many :coordinate, through: :coordinate_songs
 end

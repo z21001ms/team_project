@@ -1,0 +1,15 @@
+<h2>Register youtube URL of your song</h2>
+
+<%= form_with model: @song, url: :create, method: :post do |form| %>
+  <div>
+    <%= form.label :url, "URL" %><br>
+    <%= form.text_field :url %>
+  </div>
+
+  <br>
+  <div>
+    <%= form.submit "Register" %>
+  </div>
+<% end %>
+
+<%= link_to "Back to home", "/" %>
