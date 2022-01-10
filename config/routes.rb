@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   get "/find", to: "coordinate#find"
   get "/register", to: "song#register"
   post "/create", to: "song#create"
+  get "/songs", to: "song#index"
+    
 end
