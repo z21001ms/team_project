@@ -1,12 +1,16 @@
-<h2>Welcome to Local Song Explorer</h2>
+<nav>
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo">Welcome to Local Song Explorer</a>
+  </div>
+</nav>
 
 <%= form_with model: @coordinate, url: :find, method: :get do |form| %>
-  <div>
+  <div class="input-field">
     <%= form.label :latitude %><br>
     <%= form.text_field :latitude %>
   </div>
 
-  <div>
+  <div class="input-field">
     <%= form.label :longitude %><br>
     <%= form.text_field :longitude %>
   </div>
