@@ -22,7 +22,7 @@
 
 **Challenge**
 - [ ] PRテンプレートの活用
-- [ ] VMやDockerの開発環境構築
+- [x] VMやDockerの開発環境構築
 - [x] GitHubアクション上での静的解析(Linterなど)
 - [ ] GitHubアクション上での単体テスト実行
 - [ ] GitHubアクション上でのリグレッションテスト実行
