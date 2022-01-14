@@ -11,6 +11,7 @@ COPY . /lse_app
 
 RUN bundle install
 RUN yarn install --check-files
+RUN bundle exec rails webpacker:install
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
