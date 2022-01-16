@@ -9,7 +9,7 @@ class SongController < ApplicationController
         # TODO: Get coordinate value from the form
         coordinate = Coordinate.new(latitude: 50, longitude: 50)
         @song.coordinate << coordinate
-        @song.video_id = song_params["url"].slice(/v=.+/).slice(2..-1)
+        @song.truncate_youtube_url()
         if @song.save
             flash[:success] = "Your song registration successfully"
             redirect_to "/"
