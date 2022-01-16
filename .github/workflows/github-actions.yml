@@ -19,18 +19,18 @@ jobs:
           fail_on_error: true
 
 name: Rspec
-  on: push
-    branches:
-      - test/rspec
-  jobs:
-    rspec:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout
-        - uses: actions/checkout@v2
-        - name: Docker build
-          run: docker-compose build
-        - name: Run Rspec
-          run: docker-compose run web bundle exec rspec
-          with:
-            fail_on_error: true
+on: push
+  branches:
+    - test/rspec
+jobs:
+  rspec:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+      - uses: actions/checkout@v2
+      - name: Docker build
+        run: docker-compose build
+      - name: Run Rspec
+        run: docker-compose run web bundle exec rspec
+        with:
+          fail_on_error: true
