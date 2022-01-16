@@ -1,3 +1,48 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.scss.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+header {
+  position: relative;
+  height: 50vh;
+  margin: 0;
+}
+
+.title-container {
+  background: image-url('top.jpg') center / cover;
+  height: 100%;
+  margin: 0;
+}
+
+.title {
+  color: white;
+  font-weight: bold;
+  font-size: 60px;
+  text-shadow: 0 0 10px #333;
+
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+}
+
+.form-wrap {
+  width: 50%;
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+  top: 50%;
+}
+
+input {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.submit-wrap {
+  text-align: center;
+}
