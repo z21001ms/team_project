@@ -9,7 +9,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Docker build
-        run: docker-compose build
+      # - name: Docker build
+      #   run: docker-compose build
       - name: Run Rspec
-        run: docker-compose run web bundle exec rspec
+        run: bundle exec rspec
+        # run: docker-compose run web bundle exec rspec
