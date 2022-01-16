@@ -1,8 +1,5 @@
 name: Rspec
-on:
-  push:
-    branches:
-      - test/rspec
+on: [pull_request]
 jobs:
   rspec:
     runs-on: ubuntu-latest
