@@ -12,4 +12,9 @@
 class Song < ApplicationRecord
     has_many :coordinate_songs
     has_many :coordinate, through: :coordinate_songs
+
+    def truncate_youtube_url()
+        self.video_id = self.url.slice(/v=.+/).slice(2..-1)
+    end
+
 end
