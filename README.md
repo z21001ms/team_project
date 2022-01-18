@@ -6,6 +6,7 @@
 - `docker-compose build`
 - `docker-compose run web rake db:create`
 - `docker-compose run web rake db:migrate`
+- `docker-compose run web bundle exec rails webpacker:install`
 - `docker-compose up`
 - ブラウザを起動し、`http://localhost:3000` にアクセスする
 
