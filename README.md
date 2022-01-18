@@ -4,10 +4,10 @@
 - [Docker Desktop](https://www.docker.com/products/docker-desktop) をインストールする
 - Docker Desktop を起動する
 - `docker-compose build`
-- `docker-compose up`
 - `docker-compose run web rake db:create`
 - `docker-compose run web rake db:migrate`
 - `docker-compose run web bundle exec rails webpacker:install`
+- `docker-compose up`
 - ブラウザを起動し、`http://localhost:3000` にアクセスする
 
 **Must**
