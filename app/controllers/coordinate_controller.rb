@@ -1,8 +1,7 @@
 class CoordinateController < ApplicationController
     def find
-        # find the nearest point from coordinate table
-        coordinate = coordinate_params["coordinate"].split(",")
-        @coodinates_in_area = Coordinate.near(coordinate, 5, units: :km)
+      # find the nearest point from coordinate table
+      @coordinate = Coordinate.near(coordinate_params["coordinate"].split(","), 5, units: :km).first
     end
 
     def create
