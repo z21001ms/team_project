@@ -4,10 +4,10 @@ class SongController < ApplicationController
     end
 
     def create
-        @song = Song.new(song_params)
+        @song = Song.new(url: song_coordinate_params["url"])
         @song.platform = 1 # Platform id of youtube
-        # TODO: Get coordinate value from the form
-        coordinate = Coordinate.new(latitude: 50, longitude: 50)
+        coordinate = Coordinate.new(latitude: song_coordinate_params["latitude"], 
+                                    longitude: song_coordinate_params["longitude"])
         @song.coordinate << coordinate
         @song.truncate_youtube_url()
         if @song.save
@@ -19,8 +19,8 @@ class SongController < ApplicationController
     end
 
     private
-    def song_params
-      params.permit(:url)
+    def song_coordinate_params
+      params.permit(:url, :latitude, :longitude)
     end
 
 end
