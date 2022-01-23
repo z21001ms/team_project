@@ -1,18 +1,19 @@
 <header class="title-container">
   <h1 class="center-align title">あなたの街の<br>ご当地ソングを<br>探そう</h1>
-  <%= form_with model: @coordinate, class:"form-wrap", url: :find, method: :get do |form| %>
-    <%= form.text_field :latitude, type: "hidden" %>
-
-    <%= form.text_field :longitude, type: "hidden" %>
-
-    <div class="submit-wrap">
-      <%= form.submit "ご当地ソングを探す", class: "waves-effect waves-light btn-large",style: "font-weight: bold;font-size: 20px;" %>
+  <%= form_with model: @coordinate, class:"form-wrap col s12", url: :find, method: :get do |form| %>
+    <div class="row">
+      <div class="input-field col s6 offset-s3">
+        <i class="material-icons prefix">location_on</i>
+        <%= form.text_field :coordinate%>
+      </div>
     </div>
-
-  <% end %>
+    <div class="row">
+        <div class="submit-wrap col s8 offset-s2">
+          <%= form.submit "ご当地ソングを探す", class: "waves-effect waves-light btn-large",style: "font-weight: bold;font-size: 20px;" %>
+        </div>
+    </div>
+<% end %>
 </header>
-
-
 <script>
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
@@ -21,7 +22,6 @@
     }
 
     function showPosition(position) {
-        document.getElementById( "latitude" ).value = position.coords.latitude;
-        document.getElementById( "longitude" ).value = position.coords.longitude;
+        document.getElementById( "coordinate" ).value = position.coords.latitude + "," + position.coords.longitude;
     }
 </script>
