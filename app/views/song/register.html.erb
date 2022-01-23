@@ -1,4 +1,4 @@
-<div class="card-panel z-depth-5", style="margin: 0.5rem 20rem 1rem 20rem;">
+<div class="card-panel z-depth-5 center", style="margin: 0.5rem 30rem 1rem 30rem;">
 <h4>ご当地ソングを登録しよう</h4>
 
 <%= link_to "Googleマップ", "https://google.co.jp/maps", class:"btn waves-effect waves-light", style: "color: black;" %>
@@ -6,14 +6,13 @@
 <br>
 <%= form_with model: @song, url: :create, method: :post do |form| %>
   <div class="register_form">
-    <%= form.label :url, "URL" %><br>
-    <%= form.text_field :url %>
-    <%= form.label :latitude, "緯度" %><br>
-    <%= form.text_field :latitude %>
-    <%= form.label :longitude, "経度" %><br>
-    <%= form.text_field :longitude %>
+    <%= form.label :url, "URL", class:"left" %><br>
+    <%= form.text_field :url, class:"center" %>
+    <%= form.label :latitude, "緯度", class:"left" %><br>
+    <%= form.text_field :latitude, class:"center" %>
+    <%= form.label :longitude, "経度", class:"left" %><br>
+    <%= form.text_field :longitude, class:"center" %>
   </div>
-
   <br>
     <button class="btn waves-effect waves-light" type="submit" name="action" style= "font-weight: bold; color: black;">登録
       <i class="material-icons right">send</i>
