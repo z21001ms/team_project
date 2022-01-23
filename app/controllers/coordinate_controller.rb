@@ -1,7 +1,8 @@
 class CoordinateController < ApplicationController
     def find
         # find the nearest point from coordinate table
-        @coodinates_in_area = Coordinate.near([coordinate_params["latitude"], coordinate_params["longitude"]], 5, units: :km)
+        coordinate = coordinate_params["coordinate"].split(",")
+        @coodinates_in_area = Coordinate.near(coordinate, 5, units: :km)
     end
 
     def create
@@ -11,6 +12,6 @@ class CoordinateController < ApplicationController
 
     private
     def coordinate_params
-      params.permit(:latitude, :longitude)
+      params.permit(:coordinate)
     end    
 end
