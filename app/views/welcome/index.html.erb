@@ -1,4 +1,5 @@
 <header class="title-container">
+  <div class="flash"><%= flash[:success] %></div>
   <h1 class="center-align title">あなたの街の<br>ご当地ソングを<br>探そう</h1>
   <%= form_with model: @coordinate, class:"form-wrap", url: :find, method: :get do |form| %>
     <%= form.text_field :latitude, type: "hidden" %>

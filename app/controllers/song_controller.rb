@@ -13,7 +13,7 @@ class SongController < ApplicationController
         @song.coordinate << coordinate
         @song.truncate_youtube_url()
         if @song.save
-            flash[:success] = "Your song registration successfully"
+            flash[:success] = "登録に成功しました"
             redirect_to "/"
         else
             redirect_to "/register"
