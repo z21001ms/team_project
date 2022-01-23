@@ -2,15 +2,13 @@
 
 <ul>
   <% @coodinates_in_area.each do |point| %>
-    <h3>Point</h3>
-
-    <p>Latitude: <%= point.latitude %></p>
-    <p>Longitude: <%= point.longitude %></p>
+    <p>緯度: <%= point.latitude %></p>
+    <p>経度: <%= point.longitude %></p>
     <% if point.song.collect(&:url)[0] %>
       <p><%= youtube(point.song.collect(&:video_id)[0]) %></p>
-      <p>Youtube: <%= link_to point.song.collect(&:url)[0], point.song.collect(&:url)[0] %></p>
+      <p><%= link_to point.song.collect(&:url)[0], point.song.collect(&:url)[0] %></p>
     <% else %>
-      <p> No Youtube URL </p>
+      <p> Youtube URLが登録されていません </p>
     <% end %>
   
   <% end %>

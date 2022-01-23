@@ -6,8 +6,10 @@ class SongController < ApplicationController
     def create
         @song = Song.new(url: song_coordinate_params["url"])
         @song.platform = 1 # Platform id of youtube
-        coordinate = Coordinate.new(latitude: song_coordinate_params["latitude"], 
-                                    longitude: song_coordinate_params["longitude"])
+        coordinate = Coordinate.new(latitude: song_coordinate_params["latitude"].to_f, 
+                                    longitude: song_coordinate_params["longitude"].to_f)
+        p("--------------")
+        p(coordinate)
         @song.coordinate << coordinate
         @song.truncate_youtube_url()
         if @song.save
