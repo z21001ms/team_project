@@ -1,15 +1,19 @@
-<h2>あなたの街のご当地ソングが見つかりました！</h2>
-
-<ul>
-  <% @coodinates_in_area.each do |point| %>
-    <p>緯度: <%= point.latitude %></p>
-    <p>経度: <%= point.longitude %></p>
-    <% if point.song.collect(&:url)[0] %>
-      <p><%= youtube(point.song.collect(&:video_id)[0]) %></p>
-      <p><%= link_to point.song.collect(&:url)[0], point.song.collect(&:url)[0] %></p>
-    <% else %>
-      <p> Youtube URLが登録されていません </p>
-    <% end %>
-  
-  <% end %>
-</ul>
+<!--<p>Latitude: <%#= @coordinate.latitude %></p>-->
+<!--<p>Longitude: <%#= @coordinate.longitude %></p>-->
+<% if (@coordinate.present?)%>
+  <div class="container">
+    <div class="row">
+      <i class="material-icons medium icon">location_on</i>
+      <p class="find-title">ご当地ソングが見つかりました！</p>
+      <% if @coordinate.song.collect(&:url)[0] %>
+        <div class="youtube-wrap">
+          <iframe class="youtube" width="640" height="450" src=<%= "https://www.youtube.com/embed/" + @coordinate.song.collect(&:video_id)[0] %> allow="autoplay;" allowfullscreen></iframe>
+        </div>
+      <% else %>
+        <p> No Youtube URL </p>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <p class="find-title">あなたの街のご当地ソングは見つかりませんでした！</p>
+<% end %>

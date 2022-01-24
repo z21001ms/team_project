@@ -5,6 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-song = Song.create(platform: 0, url: "https://www.youtube.com/watch?v=43J3Hdljex4")
+song = Song.create(platform: 0, url: "https://www.youtube.com/watch?v=43J3Hdljex4",video_id: "43J3Hdljex4")
 coordinate = Coordinate.create(latitude: 35.6602646, longitude: 139.4780048)
 CoordinateSong.create(song_id: song.id, coordinate_id: coordinate.id)
