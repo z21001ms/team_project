@@ -4,14 +4,16 @@ class SongController < ApplicationController
     end
 
     def create
-        @song = Song.new(song_params)
+        @song = Song.new(url: song_coordinate_params["url"])
         @song.platform = 1 # Platform id of youtube
-        # TODO: Get coordinate value from the form
-        coordinate = Coordinate.new(latitude: 50, longitude: 50)
+        coordinate = Coordinate.new(latitude: song_coordinate_params["latitude"].to_f, 
+                                    longitude: song_coordinate_params["longitude"].to_f)
+        p("--------------")
+        p(coordinate)
         @song.coordinate << coordinate
         @song.truncate_youtube_url()
         if @song.save
-            flash[:success] = "Your song registration successfully"
+            flash[:success] = "登録に成功しました"
             redirect_to "/"
         else
             redirect_to "/register"
@@ -19,8 +21,8 @@ class SongController < ApplicationController
     end
 
     private
-    def song_params
-      params.permit(:url)
+    def song_coordinate_params
+      params.permit(:url, :latitude, :longitude)
     end
 
 end
