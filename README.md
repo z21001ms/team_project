@@ -22,7 +22,7 @@
 - [x] Heroku環境への自動デプロイ
 
 **Challenge**
-- [ ] PRテンプレートの活用
+- [x] PRテンプレートの活用
 - [x] VMやDockerの開発環境構築
 - [x] GitHubアクション上での静的解析(Linterなど)
 - [x] GitHubアクション上での単体テスト実行
