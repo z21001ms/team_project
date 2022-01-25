@@ -1,4 +1,4 @@
-<div class="card-panel z-depth-5 center", style="margin: 11rem 30rem 1rem 30rem;">
+<div class="card-panel z-depth-5 center", style="margin: 11rem 30rem 11rem 30rem;">
 <h4>ご当地ソングを登録しよう</h4>
 
 <%= link_to "Googleマップ", "https://google.co.jp/maps", class:"btn waves-effect waves-light", style: "color: black;" %>
@@ -19,16 +19,3 @@
     </button>
 <% end %>
 </div><!--card-->
-
-<script>
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-        window.alert('Geolocation API対応ブラウザでアクセスしてください。');
-    }
-
-    function showPosition(position) {
-        document.getElementById( "latitude" ).value = position.coords.latitude;
-        document.getElementById( "longitude" ).value = position.coords.longitude;
-    }
-</script>
