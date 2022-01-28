@@ -1,0 +1,15 @@
+name: Rspec
+on: [pull_request]
+jobs:
+  rspec:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Docker build
+        run: |
+          docker-compose build
+          docker-compose run web rake db:create
+          docker-compose run web rake db:migrate
+      - name: Run Rspec
+        run: docker-compose run web bundle exec rspec

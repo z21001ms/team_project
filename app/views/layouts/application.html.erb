@@ -11,6 +11,38 @@
   </head>
 
   <body>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="/" class="brand-logo"><i class="material-icons">music_video</i>Local Song Explorer</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><%= link_to "ご当地ソングを登録する", "/register" %></li>
+        </ul>
+      </div>
+    </nav>
     <%= yield %>
+    <footer class="page-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Local Song Explorer</h5>
+            <p class="grey-text text-lighten-4">Local Song Explorerはあなたの街のご当地ソングを探して再生するサービスです。</p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Links</h5>
+            <ul>
+              <a href="https://twitter.com/LocalSongExp?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @LocalSongExp</a>
+              <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          © 2021 Copyright Text
+
+          <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

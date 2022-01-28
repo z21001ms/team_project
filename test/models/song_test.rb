@@ -7,6 +7,7 @@
 #  url        :string(2048)     not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  video_id   :string           not null
 #
 require "test_helper"
 
